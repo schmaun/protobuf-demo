@@ -2,7 +2,7 @@
 
 syntax = "proto3";
 
-package instapro.events.service_request.v1;
+package instapro.events.jobs.v1;
 
 import "instapro/types/v1/coordinates.proto";
 import "instapro/types/v1/attachment.proto";
@@ -15,8 +15,8 @@ message JobPublished {
   string title = 4;
 
   enum Importance {
-    ASAP = 0;
-    WHENEVER = 1;
+    IMPORTANCE_ASAP_UNSPECIFIED = 0;
+    IMPORTANCE_WHENEVER = 1;
   }
   Importance importance = 6;
 
