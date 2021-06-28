@@ -1,0 +1,12 @@
+{
+    "name": "schmaun/protobuf-demo",
+    "autoload": {
+        "psr-4": {
+            "Instapro\\": "messages/Instapro",
+            "GPBMetadata\\": "messages/GPBMetadata"
+        }
+    },
+    "require": {
+        "google/protobuf": "^3.17"
+    }
+}

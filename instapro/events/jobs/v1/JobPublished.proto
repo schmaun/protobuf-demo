@@ -1,0 +1,26 @@
+// instapro/events/jobs/v1/JobPublished.proto
+
+syntax = "proto3";
+
+package instapro.events.service_request.v1;
+
+import "instapro/types/v1/coordinates.proto";
+import "instapro/types/v1/attachment.proto";
+
+/* New Job was published */
+message JobPublished {
+  int32 job_id = 2; // Id of newly published job
+  int32 consumer_id = 1; // User Id of the consumer
+  int32 service_id = 3; // Id of the service
+  string title = 4;
+
+  enum Importance {
+    ASAP = 0;
+    WHENEVER = 1;
+  }
+  Importance importance = 6;
+
+  instapro.types.v1.Coordinates coordinates = 7;
+  map <string, instapro.types.v1.Attachment> images = 8;
+  repeated instapro.types.v1.Attachment files = 23;
+}

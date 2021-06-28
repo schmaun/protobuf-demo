@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package instapro.types.v1;
+
+// Geographical coordinates.
+message Coordinates {
+  double latitude = 1;
+  double longitude = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package instapro.types.v1;
+
+// Represents an attachment
+message Attachment {
+  string id = 1; // UUID
+  string title = 2;
+  string url = 3; // Absolute url
+  string mime_type = 4;
+}
