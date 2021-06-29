@@ -24,7 +24,7 @@ function getMessageContent(object $event): string
         case \Instapro\Events\Jobs\V1\JobPublished::class:
             return $event->getTitle();
         default:
-            throw new RuntimeException('Unhandled type: ' . $event::class);
+            return 'ignored message type';
     }
 }
 

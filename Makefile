@@ -1,4 +1,4 @@
-.PHONY: build lint doc consumer publisher
+.PHONY: build lint doc consumer publisher publisher_another dump
 
 build:
 	find ./instapro -name '*.proto' -print0 | xargs -0 protoc --php_out=./demo/messages
@@ -14,3 +14,9 @@ consumer:
 
 publisher:
 	cd demo && /usr/local/Cellar/php/8.0.5/bin/php publisher.php
+
+publisher_another:
+	cd demo && /usr/local/Cellar/php/8.0.5/bin/php publisher_another.php
+
+dump:
+	cd demo && /usr/local/Cellar/php/8.0.5/bin/php /usr/local/bin/composer dump-autoload
