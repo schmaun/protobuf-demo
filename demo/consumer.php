@@ -13,7 +13,7 @@ $queue = fopen($queueName, 'rb');
 while(true) {
     $rawMessage = fread($queue, 2000);
     if (!empty($rawMessage)) {
-        $event = new \Instapro\Events\Service_request\V1\JobPublished();
+        $event = new \Instapro\Events\Jobs\V1\JobPublished();
         $event->mergeFromString($rawMessage);
 
         echo $event->getTitle() . PHP_EOL;

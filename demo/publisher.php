@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Instapro\Events\Jobs\V1\JobPublished;
+use Instapro\Events\Jobs\V1\JobPublished\Importance;
+use Instapro\Types\V1\Attachment;
+
 require_once "vendor/autoload.php";
 
 function getRandomId(): int
@@ -25,15 +29,15 @@ function getRandomCoordinates(): float
     return (float)(random_int(1, 50) / 7);
 }
 
-function createRandomEvent(): \Instapro\Events\Service_request\V1\JobPublished
+function createRandomEvent(): JobPublished
 {
-    $event = new \Instapro\Events\Service_request\V1\JobPublished();
+    $event = new JobPublished();
     $event->setJobId(getRandomId());
     $event->setConsumerId(getRandomId());
     $event->setServiceId(getRandomId());
     $event->setTitle(getRandomTitle());
 
-    $event->setImportance(\Instapro\Events\Service_request\V1\JobPublished\Importance::ASAP);
+    $event->setImportance(Importance::IMPORTANCE_ASAP_UNSPECIFIED);
 
     $coordinates = new \Instapro\Types\V1\Coordinates();
     $coordinates->setLatitude(getRandomCoordinates());
@@ -41,13 +45,13 @@ function createRandomEvent(): \Instapro\Events\Service_request\V1\JobPublished
     $event->setCoordinates($coordinates);
 
     $event->setImages([
-                          'one' => new \Instapro\Types\V1\Attachment(),
-                          'two' => new \Instapro\Types\V1\Attachment(),
+                          'one' => new Attachment(),
+                          'two' => new Attachment(),
                       ]);
 
     $event->setFiles([
-                         new \Instapro\Types\V1\Attachment(),
-                         new \Instapro\Types\V1\Attachment(),
+                         new Attachment(),
+                         new Attachment(),
                      ]);
     return $event;
 }
