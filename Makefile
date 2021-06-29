@@ -6,6 +6,9 @@ build:
 lint:
 	buf lint
 
+bc:
+	buf breaking --against .git#branch=main
+
 consumer:
 	cd demo && /usr/local/Cellar/php/8.0.5/bin/php consumer.php
 
