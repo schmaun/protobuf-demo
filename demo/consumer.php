@@ -18,6 +18,16 @@ function setupRabbitMq(): \PhpAmqpLib\Channel\AMQPChannel
 
 $channel = setupRabbitMq();
 
+function getMessageContent(object $event): string
+{
+    switch ($event::class) {
+        case \Instapro\Events\Jobs\V1\JobPublished::class:
+            return $event->getTitle();
+        default:
+            throw new RuntimeException('Unhandled type: ' . $event::class);
+    }
+}
+
 while (true) {
     $channel->basic_consume('events', '', false, true, false, false, function (AMQPMessage $msg) {
         $properties = $msg->get('application_headers');
@@ -26,7 +36,7 @@ while (true) {
         $event = new $type();
         $event->mergeFromString($msg->getBody());
 
-        echo $event->getTitle() . PHP_EOL;
+        echo get_class($event) . ': ' . getMessageContent($event) . PHP_EOL;
     });
 
     while ($channel->is_open()) {
