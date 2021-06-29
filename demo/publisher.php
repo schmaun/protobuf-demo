@@ -39,7 +39,7 @@ function createRandomEvent(): JobPublished
     $event->setServiceId(getRandomId());
     $event->setTitle(getRandomTitle());
 
-    $event->setImportance(Importance::IMPORTANCE_ASAP_UNSPECIFIED);
+    $event->setImportance(Importance::IMPORTANCE_ASAP);
 
     $coordinates = new \Instapro\Types\V1\Coordinates();
     $coordinates->setLatitude(getRandomCoordinates());
