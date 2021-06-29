@@ -2,21 +2,34 @@
 
 declare(strict_types=1);
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
 require_once "vendor/autoload.php";
 
-$queueName = 'stream.txt';
-if(!file_exists($queueName)) {
-    touch($queueName);
-}
-$queue = fopen($queueName, 'rb');
+function setupRabbitMq(): \PhpAmqpLib\Channel\AMQPChannel
+{
+    $connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+    $channel = $connection->channel();
+    $channel->queue_declare('events', false, false, false, false);
 
-while(true) {
-    $rawMessage = fread($queue, 2000);
-    if (!empty($rawMessage)) {
-        $event = new \Instapro\Events\Jobs\V1\JobPublished();
-        $event->mergeFromString($rawMessage);
+    return $channel;
+}
+
+$channel = setupRabbitMq();
+
+while (true) {
+    $channel->basic_consume('events', '', false, true, false, false, function (AMQPMessage $msg) {
+        $properties = $msg->get('application_headers');
+        $type = $properties['x-type'];
+
+        $event = new $type();
+        $event->mergeFromString($msg->getBody());
 
         echo $event->getTitle() . PHP_EOL;
+    });
+
+    while ($channel->is_open()) {
+        $channel->wait();
     }
-    usleep(10);
 }
