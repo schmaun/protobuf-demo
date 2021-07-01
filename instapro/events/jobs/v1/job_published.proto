@@ -15,8 +15,9 @@ message JobPublished {
   string title = 4;
 
   enum Importance {
-    IMPORTANCE_ASAP_UNSPECIFIED = 0;
-    IMPORTANCE_WHENEVER = 1;
+    IMPORTANCE_UNSPECIFIED = 0;
+    IMPORTANCE_ASAP = 1;
+    IMPORTANCE_WHENEVER = 2;
   }
   Importance importance = 6;
 

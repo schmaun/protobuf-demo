@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/demo/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/demo/vendor/composer" />
+      <path value="$PROJECT_DIR$/demo/vendor/google/protobuf" />
+      <path value="$PROJECT_DIR$/demo/vendor/php-amqplib/php-amqplib" />
+      <path value="$PROJECT_DIR$/demo/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/demo/vendor/paragonie/constant_time_encoding" />
+    </include_path>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
 </project>

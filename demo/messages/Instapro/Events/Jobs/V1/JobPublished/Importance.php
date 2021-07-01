@@ -12,16 +12,21 @@ use UnexpectedValueException;
 class Importance
 {
     /**
-     * Generated from protobuf enum <code>IMPORTANCE_ASAP_UNSPECIFIED = 0;</code>
+     * Generated from protobuf enum <code>IMPORTANCE_UNSPECIFIED = 0;</code>
      */
-    const IMPORTANCE_ASAP_UNSPECIFIED = 0;
+    const IMPORTANCE_UNSPECIFIED = 0;
     /**
-     * Generated from protobuf enum <code>IMPORTANCE_WHENEVER = 1;</code>
+     * Generated from protobuf enum <code>IMPORTANCE_ASAP = 1;</code>
      */
-    const IMPORTANCE_WHENEVER = 1;
+    const IMPORTANCE_ASAP = 1;
+    /**
+     * Generated from protobuf enum <code>IMPORTANCE_WHENEVER = 2;</code>
+     */
+    const IMPORTANCE_WHENEVER = 2;
 
     private static $valueToName = [
-        self::IMPORTANCE_ASAP_UNSPECIFIED => 'IMPORTANCE_ASAP_UNSPECIFIED',
+        self::IMPORTANCE_UNSPECIFIED => 'IMPORTANCE_UNSPECIFIED',
+        self::IMPORTANCE_ASAP => 'IMPORTANCE_ASAP',
         self::IMPORTANCE_WHENEVER => 'IMPORTANCE_WHENEVER',
     ];
 

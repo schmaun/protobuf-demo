@@ -7,6 +7,7 @@
         }
     },
     "require": {
-        "google/protobuf": "^3.17"
+        "google/protobuf": "^3.17",
+        "php-amqplib/php-amqplib": "^3.0"
     }
 }
