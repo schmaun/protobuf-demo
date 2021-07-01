@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package instapro.events.talks.v1;
+
+message FeedbackProvided {
+  int32 talk_id = 1;
+  string content = 2;
+}

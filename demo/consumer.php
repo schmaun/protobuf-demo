@@ -23,6 +23,8 @@ function getMessageContent(object $event): string
     switch ($event::class) {
         case \Instapro\Events\Jobs\V1\JobPublished::class:
             return $event->getTitle();
+        case \Instapro\Events\Talks\V1\FeedbackProvided::class:
+            return $event->getContent();
         default:
             return 'ignored message type';
     }

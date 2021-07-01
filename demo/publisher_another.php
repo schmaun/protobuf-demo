@@ -9,7 +9,10 @@ require_once "vendor/autoload.php";
 
 function createRandomEvent(): object
 {
+    $event = new \Instapro\Events\Talks\V1\FeedbackProvided();
+    $event->setContent('Boring, but great! o_O');
 
+    return $event;
 }
 
 function setupRabbitMq(): \PhpAmqpLib\Channel\AMQPChannel
