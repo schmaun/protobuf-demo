@@ -10,13 +10,13 @@ bc:
 	buf breaking --against .git#branch=main
 
 consumer:
-	cd demo && /usr/local/Cellar/php/8.0.5/bin/php consumer.php
+	cd demo && php consumer.php
 
 publisher:
-	cd demo && /usr/local/Cellar/php/8.0.5/bin/php publisher.php
+	cd demo && php publisher.php
 
 publisher_another:
-	cd demo && /usr/local/Cellar/php/8.0.5/bin/php publisher_another.php
+	cd demo && php publisher_another.php
 
 dump:
-	cd demo && /usr/local/Cellar/php/8.0.5/bin/php /usr/local/bin/composer dump-autoload
+	cd demo && php /usr/local/bin/composer dump-autoload
